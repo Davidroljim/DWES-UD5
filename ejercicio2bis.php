@@ -7,14 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-
+    
     <?php
-session_start();
-$_SESSION["usuario"] = "david";
-$_SESSION["contraseña"] = "furbo";
 
-print_r($_SESSION);
-echo (session_id());
+    session_start();
+    echo (session_id());
+
     ?>
 
 </body>
