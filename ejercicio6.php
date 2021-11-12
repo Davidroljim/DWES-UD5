@@ -23,17 +23,24 @@
 		$contrasenya=htmlspecialchars($_POST["contrasenya"]);
 
         $datos = getUser($usuario);
-
+        $_SESSION["perfil"]=$datos["perfil"];
         if ($datos==false) {
             echo "usuario incorrecto";
         }else {
             $validar = password_verify($contrasenya,$datos["contrasenya"]);
             if ($validar) {
                 echo "contraseña correcta";
+                    if ($_SESSION["perfil"]=="admin") {
+            header("Location: admin.php");
+        }else if ($_SESSION["perfil"]=="usuario") {
+            header("Location: usuario.php");
+        }
             }else {
             echo "contraseña incorrecta";
             }
         }
+
+        
     }
     ?>
 
