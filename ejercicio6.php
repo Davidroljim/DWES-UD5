@@ -11,7 +11,7 @@
     <?php
 
     include "ejercicio6BBDD.php";
-
+    session_start();
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $usuario=strip_tags($_POST["usuario"]);
@@ -24,6 +24,7 @@
 
         $datos = getUser($usuario);
         $_SESSION["perfil"]=$datos["perfil"];
+
         if ($datos==false) {
             echo "usuario incorrecto";
         }else {
@@ -34,6 +35,8 @@
             header("Location: admin.php");
         }else if ($_SESSION["perfil"]=="usuario") {
             header("Location: usuario.php");
+        }else {
+            header("Location: ejercicio6.php");
         }
             }else {
             echo "contraseña incorrecta";

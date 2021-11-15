@@ -7,6 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 style="color:green;">Hola pringao</h1>
+    
+    <?php
+    session_start();
+    if ($_SESSION["perfil"]=="usuario") {
+            echo '<h1 style="color:green;">Hola pringao</h1>';
+        }else if ($_SESSION["perfil"]=="admin") {
+            header("Location: admin.php");
+        }else {
+            header("Location: ejercicio6.php");
+        }
+    ?>
+    <a href="cierrasesion.php">Cerrar sesión</a>
 </body>
 </html>

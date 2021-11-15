@@ -7,6 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 style="color:green;">Eres el jefe supremo, ¿no quieres ir a tu página?</h1>
+
+    <?php
+    session_start();
+    if ($_SESSION["perfil"]=="admin") {
+            echo '<h1 style="color:green;">Eres el jefe</h1>';
+        }else if ($_SESSION["perfil"]=="usuario") {
+            header("Location: usuario.php");
+        }else {
+            header("Location: ejercicio6.php");
+        }
+    
+    ?>
+    <a href="cierrasesion.php">Cerrar sesión</a>    
+
 </body>
 </html>
